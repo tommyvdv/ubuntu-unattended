@@ -72,22 +72,31 @@ while true; do
     echo
     read -p " please enter your preference: [1|2|3|4]: " ubver
     case $ubver in
-        [1]* )  download_file="ubuntu-16.04.2-server-i386.iso"            # filename of the iso to be downloaded
-                download_location="http://releases.ubuntu.com/16.04/"     # location of the file to be downloaded
-                new_iso_name="ubuntu-16.04.2-server-i386-unattended.iso"  # filename of the new iso file to be created
+
+                # http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04-server-i386.iso
+        [1]* )  download_file="ubuntu-16.04-server-i386.iso" # filename of the iso to be downloaded
+                download_location="http://old-releases.ubuntu.com/releases/16.04.2/" # location of the file to be downloaded
+                new_iso_name="ubuntu-16.04.2-server-i386-unattended.iso" # filename of the new iso file to be created
                 break;;
-        [2]* )  download_file="ubuntu-16.04.2-server-amd64.iso"           # filename of the iso to be downloaded
-                download_location="http://releases.ubuntu.com/16.04/"     # location of the file to be downloaded
+
+                # http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04-server-amd64.iso
+        [2]* )  download_file="ubuntu-16.04-server-amd64.iso" # filename of the iso to be downloaded
+                download_location="http://old-releases.ubuntu.com/releases/16.04.2/" # location of the file to be downloaded
                 new_iso_name="ubuntu-16.04.2-server-amd64-unattended.iso" # filename of the new iso file to be created
                 break;;
-        [3]* )  download_file="ubuntu-14.04.5-server-i386.iso"            # filename of the iso to be downloaded
-                download_location="http://releases.ubuntu.com/14.04.5/"   # location of the file to be downloaded
-                new_iso_name="ubuntu-14.04.5-server-i386-unattended.iso"  # filename of the new iso file to be created
+
+                # http://old-releases.ubuntu.com/releases/14.04.4/ubuntu-14.04.1-server-i386.iso
+        [3]* )  download_file="ubuntu-14.04.1-server-i386.iso" # filename of the iso to be downloaded
+                download_location="http://old-releases.ubuntu.com/releases/14.04.4/" # location of the file to be downloaded
+                new_iso_name="ubuntu-14.04.5-server-i386-unattended.iso" # filename of the new iso file to be created
                 break;;
-        [4]* )  download_file="ubuntu-14.04.5-server-amd64.iso"           # filename of the iso to be downloaded
-                download_location="http://releases.ubuntu.com/14.04.5/"   # location of the file to be downloaded
+
+                # http://old-releases.ubuntu.com/releases/14.04.4/ubuntu-14.04.1-server-amd64.iso
+        [4]* )  download_file="ubuntu-14.04.1-server-amd64.iso" # filename of the iso to be downloaded
+                download_location="http://old-releases.ubuntu.com/releases/14.04.5/" # location of the file to be downloaded
                 new_iso_name="ubuntu-14.04.5-server-amd64-unattended.iso" # filename of the new iso file to be created
                 break;;
+
         * ) echo " please answer [1], [2], [3] or [4]";;
     esac
 done
@@ -133,7 +142,7 @@ esac
 # download the ubunto iso
 cd $tmp
 if [[ ! -f $tmp/$download_file ]]; then
-    echo -n " downloading $download_file: "
+    echo -n " downloading $download_file (from: $download_location$download_file): "
     download "$download_location$download_file"
 fi
 
