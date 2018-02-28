@@ -3,27 +3,27 @@ set -e
 
 spinner()
 {
-	local pid=$1
-	local delay=0.175
-	local spinstr='|/-\'
-	local infotext=$2
-	tput civis;
+    local pid=$1
+    local delay=0.175
+    local spinstr='|/-\'
+    local infotext=$2
+    tput civis;
 
-	while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
-		local temp=${spinstr#?}
-		printf " [%c] %s" "$spinstr" "$infotext"
-		local spinstr=$temp${spinstr%"$temp"}
-		sleep $delay
-		printf "\b\b\b\b\b\b"
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c] %s" "$spinstr" "$infotext"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
 
-		for i in $(seq 1 ${#infotext}); do
-			printf "\b"
-		done
-	
-	done
+        for i in $(seq 1 ${#infotext}); do
+            printf "\b"
+        done
 
-	printf " \b\b\b\b"
-	tput cnorm;
+    done
+
+    printf " \b\b\b\b"
+    tput cnorm;
 }
 
 # set defaults
@@ -36,9 +36,9 @@ clear
 
 # check for root privilege
 if [ "$(id -u)" != "0" ]; then
-	echo " this script must be run as root" 1>&2
-	echo
-	exit 1
+    echo " this script must be run as root" 1>&2
+    echo
+    exit 1
 fi
 
 # determine ubuntu version
@@ -46,12 +46,12 @@ ubuntu_version=$(lsb_release -cs)
 
 # check for interactive shell
 if ! grep -q "noninteractive" /proc/cmdline ; then
-	stty sane
+    stty sane
 
-	# ask questions
-	read -ep " please enter your preferred hostname: " -i "$default_hostname" hostname
-	read -ep " please enter your preferred domain: " -i "$default_domain" domain
-	read -ep " please enter your username: " -i "$default_user" username
+    # ask questions
+    read -ep " please enter your preferred hostname: " -i "$default_hostname" hostname
+    read -ep " please enter your preferred domain: " -i "$default_domain" domain
+    read -ep " please enter your username: " -i "$default_user" username
 fi
 
 # print status message
@@ -92,7 +92,7 @@ chown $username:$username .z*
 
 # remove /dev/mapper/vg0-tmp to give free space to volume group: vg0
 if [ -b /dev/mapper/vg0-tmp ]; then
-	lvremove -f /dev/mapper/vg0-tmp
+    lvremove -f /dev/mapper/vg0-tmp
 fi
 
 # remove myself to prevent any unintended changes at a later stage

@@ -48,11 +48,11 @@ function program_is_installed {
 }
 
 # print a pretty header
-echo 
+echo
 echo " +---------------------------------------------------+"
 echo " |            UNATTENDED UBUNTU ISO MAKER            |"
 echo " +---------------------------------------------------+"
-echo 
+echo
 
 if [ ${UID} -ne 0 ]; then
     echo " [-] This script must be runned with root privileges."
@@ -125,7 +125,7 @@ while true; do
 done
 
 read -p " autostart installation on boot (y/n)?" choice
-case "$choice" in 
+case "$choice" in
   y|Y ) autostart=true;;
   * ) autostart=false;;
 esac
@@ -150,7 +150,7 @@ if [ $(program_is_installed "mkpasswd") -eq 0 ] || [ $(program_is_installed "mki
     spinner $!
     (apt-get -y install whois genisoimage > /dev/null 2>&1) &
     spinner $!
-    
+
     # thanks to rroethof
     if [ -f /usr/bin/mkisofs ]; then
       ln -s /usr/bin/genisoimage /usr/bin/mkisofs
@@ -225,7 +225,7 @@ umount $tmp/iso_org
 rm -rf $tmp/iso_new
 rm -rf $tmp/iso_org
 
-# print info to user  
+# print info to user
 echo " -----"
 echo " finished remastering your ubuntu iso file"
 echo " the new file is located at: $tmp/$new_iso_name"

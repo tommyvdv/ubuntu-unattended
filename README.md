@@ -97,7 +97,7 @@ This script does a bunch of stuff, here's the quick walk-through:
 * Cleanup
 * Show a summary of what happended:
 
-```  
+```
  installing required packages
  remastering your iso file
  creating the remastered iso
@@ -105,16 +105,16 @@ This script does a bunch of stuff, here's the quick walk-through:
  finished remastering your ubuntu iso file
  the new file is located at: /tmp/ubuntu-14.04.3-server-amd64-unattended.iso
  your username is: <your login name>
- your password is: 
+ your password is:
  your hostname is: ubuntu
  your timezone is: Europe/Amsterdam
 ```
 
 ### Once Ubuntu is installed ...
 
-Just fire off the init.sh script in your user's home directory to complete the installation. 
+Just fire off the init.sh script in your user's home directory to complete the installation.
 
-```$ sudo ~/init.sh``` 
+```$ sudo ~/init.sh```
 
 ### Licensing
 ubuntu-unattended is licensed under the GPLv3:
